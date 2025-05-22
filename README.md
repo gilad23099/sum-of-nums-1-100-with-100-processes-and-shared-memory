@@ -1,35 +1,23 @@
-Parallel Sum with Shared Memory and Semaphore
-📌 Description
+# Parallel Sum with Shared Memory and Semaphore
 
-This C program creates 100 child processes, each adding a unique number (1–100) to a shared memory variable. A System V semaphore ensures that only one process modifies the shared value at a time.
-🎯 Goal
+## Description
 
-Calculate the sum 1 + 2 + ... + 100 = 5050 using 100 processes and protect access with a semaphore.
-💡 Key Concepts
+This C program creates 100 child processes. Each process adds a unique number (1–100) to a shared integer stored in System V shared memory. A semaphore is used to ensure mutual exclusion.
 
-    Process creation (fork)
+## Goal
 
-    Shared memory (shmget, shmat)
+Calculate the sum of numbers 1 to 100 in parallel with process synchronization. Final result should be:
 
-    Semaphore for synchronization (semget, semop, semctl)
 
-⚙️ How to Compile & Run
+## Key Concepts
 
-gcc -o parallel_sum parallel_sum.c
-./parallel_sum
+- `fork()` for process creation  
+- `shmget`, `shmat` for shared memory  
+- `semget`, `semop`, `semctl` for semaphore control  
 
-Expected output:
+## Build and Run
 
-sharedInt value at the end: 5050
+```bash
+gcc assignment3.c -o assignment3
+./assignment3
 
-✅ Features
-
-    Proper semaphore locking/unlocking
-
-    Shared memory initialized and cleaned up
-
-    Final result printed by the parent process
-
-🧹 Cleanup
-
-Shared memory and semaphore are deleted automatically at the end.
